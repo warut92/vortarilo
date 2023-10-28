@@ -1,3 +1,3 @@
 # vortarilo
 
-Mia persona ilo por manipuuli ion rilate al mia vortara kompilado.
+Mia persona ilo por manipuli ion rilate al mia vortara kompilado.
