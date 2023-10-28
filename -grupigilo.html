@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./style.css">
+    <title>Grupigilo</title>
+  </head>
+  <body>
+    <h1>Grupigilo</h1>
+    1 vortaro <br>
+    <textarea id="vortoj1" cols="100" rows="10"></textarea>
+    <br>
+    2 vortaro <br>
+    <textarea id="vortoj2" cols="100" rows="10"></textarea>
+    <p id="informoj"></p>
+    <button type="button" name="button" onclick="prilabori()">prilabori</button>
+    <p id="rezulto"></p>
+  </body>
+  <script type="text/javascript">
+  function prilabori() {
+    //preni la vortojn.
+    let vortoj1 = document.getElementById('vortoj1').value;
+    let vortoj2 = document.getElementById('vortoj2').value;
+    //igi ilin array.
+    const vortoj1_arr = vortoj1.split(/\n/g)
+    const vortoj2_arr = vortoj2.split(/\n/g)
+    console.log('VORTOJ1', vortoj1)
+    console.log('VORTOJ2', vortoj2)
+
+    //eligi la informojn al la paĝo.
+    document.getElementById('informoj').innerHTML = "1 havas " + vortoj1_arr.length + " vortojn <br> 2 havas " + vortoj2_arr.length + " vortojn";
+
+    //serĉi la kapvorton
+    //per forigi ĉion post la unua spaceto.
+    const kapvorto1 = vortoj1_arr.map(arr => arr.replace(/\s.*/, ''))
+
+    //ĉar ĉi tiu kazo estas vortoj el la unua libro, mi forigas ĉion post la signo '
+    const kapvorto2 = vortoj2_arr.map(arr => arr.replace(/'/, ''))
+    console.log('KAPVORTO1', kapvorto1)
+    console.log('KAPVORTO2', kapvorto2)
+    //kompari
+
+    //if ĝi estas (ripetita) aldoni ion. .map kun index de array
+
+    //eligi la rezulton al la paĝo.
+
+
+
+  }
+  </script>
+</html>

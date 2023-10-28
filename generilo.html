@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="./style.css">
+  <title>generilo</title>
+</head>
+
+<body>
+  <h1>Vortara Generilo de Valso</h1>
+  <h1>Generi RegExp por serĉi grupon de vortoj</h1>
+
+  <textarea id="vortoj" onfocus="regex_igi()" cols="100" rows="10"></textarea>
+  <br>
+  <button onclick="regex_igi()">Komputi</button>
+  <button onclick="konservi_dosieron()">Konservi</button>
+  <br>
+  longeco: <span id="longeco">0</span> vortoj
+  <br>
+  <textarea id="eligo" cols="100" rows="20"></textarea>
+  <br>
+  <p>
+$1$2{UL}
+(|[a-z]{1} |-)
+(-)
+$1$2$3 {UL}
+</p>
+
+
+  <script>
+    function regex_igi() {
+      //preni valoron de fakaj vortoj
+      let vortoj = document.getElementById('vortoj').value;
+
+      //divili al tabelo
+      let tabelaj_vortoj = vortoj.split(/\n/g)
+      document.getElementById('longeco').innerHTML = tabelaj_vortoj.length;
+
+      const regex_b = "\\b"
+      let regex_formato = ''
+      for (let i = 1; i < tabelaj_vortoj.length; i++) {
+        //se estas la vorto
+        // regex_formato += "|" + regex_b + tabelaj_vortoj[i] + regex_b
+        regex_formato += "|" + regex_b + tabelaj_vortoj[i]
+      }
+      // let sxablono_regex = "^(" + regex_b + tabelaj_vortoj[0] + regex_b + regex_formato + ")( \\(ntr\\)| \\[[0-9]+\\] )";
+      let sxablono_regex = "^(|-)(" + regex_b + tabelaj_vortoj[0] + regex_formato + ")( |[a-z]{1} |- )";
+      document.getElementById('eligo').innerHTML = sxablono_regex;
+    }
+    //konservi teksteron
+    function konservi_dosieron() {
+      var textToWrite = document.getElementById("vortoj").value;
+      var textFileAsBlob = new Blob([textToWrite], {
+        type: "text/plain"
+      });
+      var fileNameToSaveAs = "nomo";
+
+      var downloadLink = document.createElement("a");
+      downloadLink.download = fileNameToSaveAs;
+      downloadLink.innerHTML = "Download File";
+      if (window.webkitURL != null) {
+        // Chrome allows the link to be clicked
+        // without actually adding it to the DOM.
+        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+      } else {
+        // Firefox requires the link to be added to the DOM
+        // before it can be clicked.
+        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+      }
+      downloadLink.click();
+    }
+  </script>
+  <div id="eligo">
+
+  </div>
+</body>
+
+</html>

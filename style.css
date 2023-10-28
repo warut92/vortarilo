@@ -1,0 +1,80 @@
+/* @import 'https://cdn.jsdelivr.net/gh/lazywasabi/thai-web-fonts@7/fonts/Loma/Loma.css'; */
+body {
+  font-family: Monospace;
+  font-size: 20px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding-top: 16px;
+  padding-right: 20px;
+  padding-bottom: 50px;
+  padding-left: 20px;
+}
+
+textarea {
+  background-color: #A9A9A9
+}
+
+a {
+  color: black
+}
+
+b {
+  font-family: "Loma", sans-serif;
+  color: blue;
+}
+
+center {
+  font-family: "Loma", sans-serif;
+  font-size: 30px;
+  padding-top: 1px;
+  padding-right: 1px;
+  padding-bottom: 1px;
+  padding-left: 1px;
+}
+
+#checkbox {
+  position: sticky;
+  left: 15px;
+}
+
+#enigo {
+  font-family: "Loma", sans-serif;
+  font-size: 22px;
+  border: 2px solid #89E682;
+  border-radius: 4px;
+  width: 100%;
+  padding: 0;
+}
+
+label {
+  font-size: 15px;
+}
+pre {
+  font-size: 10px;
+  position: absolute;
+  top: 5px;
+  right: 15px;
+}
+
+.border-highlight {
+  background-color: #89E682;
+  border-radius: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: white;
+    background: #121212;
+    border: 1px solid white;
+  }
+  input {
+    color: white;
+    background: #121212;
+  }
+  b {
+    color: #809fff;
+  }
+  a {
+    color: white;
+  }
+}
