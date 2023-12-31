@@ -1,7 +1,15 @@
 //ĉi tio estas vortoj de la eo-th vortaro.
 vortaro
 //forigi ĉion post la unua spaceto en la vortaro. Tio estas nur kapvortoj!
-let taja_vortaro = vortaro.replace(/(^[A-Za-zĈĉĜĝĤĥĴĵŜŝŬŭ-].+?)(\s.*$)/gm, '$1').replace(/(^[A-Za-zĈĉĜĝĤĥĴĵŜŝŬŭ-].+?)(-$)/gm, '$1').replace(/<!--.*?-->/g, '')
+
+let taja_vortaro = vortaro.replace(/;/gm, '\n')
+.replace(/^ /gm, '')
+.replace(/(^[A-Za-zĈĉĜĝĤĥĴĵŜŝŬŭ-].+?)(\s.*$)/gm, '$1')
+.replace(/<!--.*?-->/g, '')
+.replace(/!/g, '')
+.replace(/(.*)\-$/gm, '$1')
+
+console.log('TAJA_VORTARO', taja_vortaro)
 //konverti taja_vortaro de STR al ARR
 const taja_vortaro_arr = taja_vortaro.split("\n").filter(vorto => vorto !== "")
 
@@ -19,18 +27,18 @@ function Komparu(array1, array2) {
 
     for (let j = 0; j < array2.length; j++) {
       if (array1[i] === array2[j]) {
-        rezulto.push({ status: "<span style=\"color:red\">✔</span>", value: array1[i] });
+        rezulto.push({ status: "<span style=\"color:red\">✔</span>", value: "<a href=\"http://retavortaro.de/revo/dlg/index-2k.html?q=" + array1[i] + "\" target=\"_blank\">" + array1[i] + "</a>" });
         troviĝas_en_array2 = true;
         break;
       }
     }
 
     if (!troviĝas_en_array2) {
-      rezulto.push({ status: "mankas tradukoj!😢", value: array1[i] });
+      rezulto.push({ status: "mankas tradukoj!😢", value: "<a href=\"http://retavortaro.de/revo/dlg/index-2k.html?q=" + array1[i] + "\" target=\"_blank\">" + array1[i] + "</a>" });
     }
   }
 
-  // Check for extra elements in array2
+  // kontroli ĉu estas pliaj vortoj en array1?
   for (let i = 0; i < array2.length; i++) {
     let troviĝas_en_array1 = false;
 
@@ -42,7 +50,7 @@ function Komparu(array1, array2) {
     }
 
     if (!troviĝas_en_array1) {
-      rezulto.push({ status: "ne estas en la datumbazo! 💔", value: array2[i] });
+      rezulto.push({ status: "ne estas en la datumbazo! 💔", value: "<a href=\"http://retavortaro.de/revo/dlg/index-2k.html?q=" + array2[i] + "\" target=\"_blank\">" + array2[i] + "</a>" });
     }
   }
 
@@ -54,9 +62,9 @@ const rezultujo = document.getElementById('eligo');
 
 // Display the comparison rezulto on the webpage
 if (rezulto_de_komparado.length > 0) {
-  rezulto_de_komparado.forEach(item => {
+  rezulto_de_komparado.forEach((item, index) => {
     const paragrafo = document.createElement('p');
-    paragrafo.innerHTML = `${item.value} ${item.status}`;
+    paragrafo.innerHTML = `${index} ${item.value} ${item.status}`;
     rezultujo.appendChild(paragrafo);
   });
 }
