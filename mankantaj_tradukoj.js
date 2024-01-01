@@ -27,14 +27,14 @@ function Komparu(array1, array2) {
 
     for (let j = 0; j < array2.length; j++) {
       if (array1[i] === array2[j]) {
-        rezulto.push({ status: "<span style=\"color:red\">✔</span>", value: "<a href=\"http://retavortaro.de/revo/dlg/index-2k.html?q=" + array1[i] + "\" target=\"_blank\">" + array1[i] + "</a>" });
+        rezulto.push({ status: "", value: array2[i] + " <span style=\"color:red\">✔</span> <a href=\"http://vortaro.warut.net/#" + array2[i] + "\" target=\"_blank\">" + "RETV" + "</a> " + "<a href=\"http://retavortaro.de/revo/dlg/index-2k.html?q=" + array2[i] + "\" target=\"_blank\">" + "ReVo" + "</a> " + "<a href=\"https://vortaro.net/#" + array2[i] + "\" target=\"_blank\">" + "PIV" + "</a>" });
         troviĝas_en_array2 = true;
         break;
       }
     }
 
     if (!troviĝas_en_array2) {
-      rezulto.push({ status: "mankas tradukoj!😢", value: "<a href=\"http://retavortaro.de/revo/dlg/index-2k.html?q=" + array1[i] + "\" target=\"_blank\">" + array1[i] + "</a>" });
+      rezulto.push({ status: "mankas tradukoj!😢", value: array1[i] + " <a href=\"http://retavortaro.de/revo/dlg/index-2k.html?q=" + array1[i] + "\" target=\"_blank\">" + "ReVo" + "</a> " + "<a href=\"https://vortaro.net/#" + array1[i] + "\" target=\"_blank\">" + "PIV" + "</a>" });
     }
   }
 
@@ -50,7 +50,7 @@ function Komparu(array1, array2) {
     }
 
     if (!troviĝas_en_array1) {
-      rezulto.push({ status: "ne estas en la datumbazo! 💔", value: "<a href=\"http://retavortaro.de/revo/dlg/index-2k.html?q=" + array2[i] + "\" target=\"_blank\">" + array2[i] + "</a>" });
+      rezulto.push({ status: "ne estas en la datumbazo! 💔", value: array2[i] + " <a href=\"http://retavortaro.de/revo/dlg/index-2k.html?q=" + array2[i] + "\" target=\"_blank\">" + "ReVo" + "</a> " + "<a href=\"https://vortaro.net/#" + array2[i] + "\" target=\"_blank\">" + "PIV" + "</a>" });
     }
   }
 
