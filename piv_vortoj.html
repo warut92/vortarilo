@@ -13,7 +13,7 @@
       bottom: 0;
       right: 16px;
       padding: 1px;
-      width: 500px;
+      width: 600px;
       height: 30px;
       background-color: yellow;
       border: 2px solid blue;
@@ -33,7 +33,7 @@
   <br>
   <!-- <input id="enigo" oninput="sercxi()" onfocus="sercxi()"> -->
   <span id="eligo"></span>
-  <span id="ligiloj"></span>
+  <span id="ligiloj">Alklaki vorton por krei la ligilojn</span>
   <script src="piv_vortaro.js" charset="utf-8"></script>
   <script type="text/javascript">
     //โหลดคำจาก hash และดำเนินการรัน sercxi()
@@ -78,7 +78,7 @@
         frenesteto.style.display = 'none';
       } else {
         document.getElementById('ligiloj').innerHTML = "vidu :<i>“" + elektitaVorto + "”</i> en <a href=\"https://vortaro.net/#" + elektitaVorto + "\" target=\"_blank\">PIV</a>" +
-          ", <a href=\"https://www.reta-vortaro.de/revo/dlg/index-2l.html?q=" + elektitaVorto + "\" target=\"_blank\">ReVo</a>" + ", <a href=\"https://eo.wikipedia.org/wiki/" + elektitaVorto + "\" target=\"_blank\">Vikipedio</a>";
+          ", <a href=\"https://www.reta-vortaro.de/revo/dlg/index-2l.html?q=" + elektitaVorto + "\" target=\"_blank\">ReVo</a>" + ", <a href=\"https://eo.wikipedia.org/wiki/" + elektitaVorto + "\" target=\"_blank\">Vikipedio</a>" + ", <a href=\"https://vortaro.warut.net/#" + elektitaVorto + "\" target=\"_blank\">RETV</a>";
 
         frenesteto.style.display = 'block';
       }

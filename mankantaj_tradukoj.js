@@ -14,11 +14,11 @@ console.log('TAJA_VORTARO', taja_vortaro)
 const taja_vortaro_arr = taja_vortaro.split("\n").filter(vorto => vorto !== "")
 
 //Jen estas la vortoj prenitaj de REVO
-// revo_vortaro
-piv_vortaro
+revo_vortaro
+// piv_vortaro
 //konverti ĝin de SRT al ARR
-// const vortaro_arr = revo_vortaro.split("\n").filter(vorto => vorto !== "")
-const vortaro_arr = piv_vortaro.split("\n").filter(vorto => vorto !== "")
+const vortaro_arr = revo_vortaro.split("\n").filter(vorto => vorto !== "")
+// const vortaro_arr = piv_vortaro.split("\n").filter(vorto => vorto !== "")
 console.log('VORTARO_ARR', vortaro_arr)
 
 //funkcio de komparado
