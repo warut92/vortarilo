@@ -14,9 +14,12 @@ console.log('TAJA_VORTARO', taja_vortaro)
 const taja_vortaro_arr = taja_vortaro.split("\n").filter(vorto => vorto !== "")
 
 //Jen estas la vortoj prenitaj de REVO
-revo_vortaro
+// revo_vortaro
+piv_vortaro
 //konverti ĝin de SRT al ARR
-const revo_vortaro_arr = revo_vortaro.split("\n").filter(vorto => vorto !== "")
+// const vortaro_arr = revo_vortaro.split("\n").filter(vorto => vorto !== "")
+const vortaro_arr = piv_vortaro.split("\n").filter(vorto => vorto !== "")
+console.log('VORTARO_ARR', vortaro_arr)
 
 //funkcio de komparado
 function Komparu(array1, array2) {
@@ -57,7 +60,7 @@ function Komparu(array1, array2) {
   return rezulto;
 }
 
-const rezulto_de_komparado = Komparu(revo_vortaro_arr, taja_vortaro_arr);
+const rezulto_de_komparado = Komparu(vortaro_arr, taja_vortaro_arr);
 const rezultujo = document.getElementById('eligo');
 
 // Display the comparison rezulto on the webpage
