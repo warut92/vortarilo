@@ -2,7 +2,7 @@
 body {
   font-family: Monospace;
   font-size: 20px;
-  border: 2px solid orange;
+  border: 1px solid orange;
   border-radius: 4px;
   padding-top: 16px;
   padding-right: 20px;
@@ -40,7 +40,7 @@ center {
 #enigo {
   font-family: "Loma", sans-serif;
   font-size: 22px;
-  border: 2px solid #89E682;
+  border: 2px solid orange;
   border-radius: 4px;
   width: 100%;
   padding: 0;

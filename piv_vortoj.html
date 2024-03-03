@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="./style.css">
+  <style media="screen">
+    #ligiloj {
+      position: -webkit-sticky;
+      position: sticky;
+      position: fixed;
+      bottom: 0;
+      right: 16px;
+      padding: 1px;
+      width: 500px;
+      height: 30px;
+      background-color: yellow;
+      border: 2px solid blue;
+      font-size: 20px;
+      color: black;
+    }
+
+    a {
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Kontrolilo de Vaslo</h1>
+  <h3>kapvortoj kaj subvortoj de PIV</h3>
+  <br>
+  <!-- <input id="enigo" oninput="sercxi()" onfocus="sercxi()"> -->
+  <span id="eligo"></span>
+  <span id="ligiloj"></span>
+  <script src="piv_vortaro.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    //โหลดคำจาก hash และดำเนินการรัน sercxi()
+    if (location.hash) {
+      let vorto_hash = location.hash
+      let vorto_hash_slice = vorto_hash.slice(1)
+      document.getElementById('enigo').value = decodeURI(vorto_hash_slice)
+      sercxi()
+    }
+    sercxi()
+
+    function sercxi() {
+      //ใส่ hash ที่ url
+      // let sercxata_vorto = document.getElementById('enigo').value;
+      // location.hash = sercxata_vorto
+      piv_vortaro = piv_vortaro.replace(/^   (.*$)/gm, "&nbsp$1<br>")
+      piv_vortaro = piv_vortaro.replace(/^([A-Za-zĈĉĜĝĤĥĴĵŜŝŬŭ-].*)/gm, "<hr>$1<br>")
+
+
+
+      console.log(piv_vortaro);
+      document.getElementById('eligo').innerHTML = piv_vortaro;
+    }
+
+    //krei la veriablon por elektita vorto.
+    let elektitaVorto = "";
+
+    //funckigi per alklaki vortojn.
+    document.addEventListener("click", function() {
+      //preni vorton
+      if (window.getSelection) {
+        elektitaVorto = "" + window.getSelection().toString().toLowerCase();
+      }
+      // se la elektita vorto finiĝas per spaceto forigu ĝin!
+      if (elektitaVorto.endsWith(" ")) {
+        elektitaVorto = elektitaVorto.substring(0, elektitaVorto.length - 1)
+      }
+      console.log(elektitaVorto.length);
+      const frenesteto = document.getElementById('ligiloj');
+      if (elektitaVorto.length == 0) {
+        document.getElementById('ligiloj').innerHTML = "";
+        frenesteto.style.display = 'none';
+      } else {
+        document.getElementById('ligiloj').innerHTML = "vidu :<i>“" + elektitaVorto + "”</i> en <a href=\"https://vortaro.net/#" + elektitaVorto + "\" target=\"_blank\">PIV</a>" +
+          ", <a href=\"https://www.reta-vortaro.de/revo/dlg/index-2l.html?q=" + elektitaVorto + "\" target=\"_blank\">ReVo</a>" + ", <a href=\"https://eo.wikipedia.org/wiki/" + elektitaVorto + "\" target=\"_blank\">Vikipedio</a>";
+
+        frenesteto.style.display = 'block';
+      }
+
+
+      document.addEventListener('click', function(event) {
+        const x = event.clientX;
+        const y = event.clientY;
+        frenesteto.style.left = x + 'px';
+        frenesteto.style.top = y + 30 + 'px';
+      })
+    });
+  </script>
+</body>
+
+</html>
