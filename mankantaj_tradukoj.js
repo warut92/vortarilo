@@ -9,7 +9,6 @@ let taja_vortaro = vortaro.replace(/;/gm, '\n')
 .replace(/!/g, '')
 .replace(/(.*)\-$/gm, '$1')
 
-console.log('TAJA_VORTARO', taja_vortaro)
 //konverti taja_vortaro de STR al ARR
 const taja_vortaro_arr = taja_vortaro.split("\n").filter(vorto => vorto !== "")
 
@@ -19,46 +18,48 @@ revo_vortaro
 //konverti ĝin de SRT al ARR
 const vortaro_arr = revo_vortaro.split("\n").filter(vorto => vorto !== "")
 // const vortaro_arr = piv_vortaro.split("\n").filter(vorto => vorto !== "")
-console.log('VORTARO_ARR', vortaro_arr)
+
 
 //funkcio de komparado
-function Komparu(array1, array2) {
+function Komparu(vortaro, taja_vortaro) {
   const rezulto = [];
 
-  for (let i = 0; i < array1.length; i++) {
-    let troviĝas_en_array2 = false;
+  for (let i = 0; i < vortaro.length; i++) {
+    let troviĝas_en_taja_vortaro = false;
 
-    for (let j = 0; j < array2.length; j++) {
-      if (array1[i] === array2[j]) {
-        rezulto.push({ status: "", value: array2[i] + " <span style=\"color:red\">✔</span> <a href=\"http://vortaro.warut.net/#" + array2[i] + "\" target=\"_blank\">" + "RETV" + "</a> " + "<a href=\"http://retavortaro.de/revo/dlg/index-2k.html?q=" + array2[i] + "\" target=\"_blank\">" + "ReVo" + "</a> " + "<a href=\"https://vortaro.net/#" + array2[i] + "\" target=\"_blank\">" + "PIV" + "</a>" });
-        troviĝas_en_array2 = true;
+    for (let j = 0; j < taja_vortaro.length; j++) {
+      if (vortaro[i] === taja_vortaro[j]) {
+        rezulto.push({ status: "", value: taja_vortaro[i] + " <span style=\"color:red\">✔</span> <a href=\"http://vortaro.warut.net/#" + taja_vortaro[i] + "\" target=\"_blank\">" + "RETV" + "</a> " + "<a href=\"http://retavortaro.de/revo/dlg/index-2k.html?q=" + taja_vortaro[i] + "\" target=\"_blank\">" + "ReVo" + "</a> " + "<a href=\"https://vortaro.net/#" + taja_vortaro[i] + "\" target=\"_blank\">" + "PIV" + "</a>" });
+        troviĝas_en_taja_vortaro = true;
         break;
       }
     }
 
-    if (!troviĝas_en_array2) {
-      rezulto.push({ status: "mankas tradukoj!😢", value: array1[i] + " <a href=\"http://retavortaro.de/revo/dlg/index-2k.html?q=" + array1[i] + "\" target=\"_blank\">" + "ReVo" + "</a> " + "<a href=\"https://vortaro.net/#" + array1[i] + "\" target=\"_blank\">" + "PIV" + "</a>" });
+    if (!troviĝas_en_taja_vortaro) {
+      rezulto.push({ status: "mankas tradukoj!😢", value: vortaro[i] + " <a href=\"http://retavortaro.de/revo/dlg/index-2k.html?q=" + vortaro[i] + "\" target=\"_blank\">" + "ReVo" + "</a> " + "<a href=\"https://vortaro.net/#" + vortaro[i] + "\" target=\"_blank\">" + "PIV" + "</a>" });
     }
   }
 
-  // kontroli ĉu estas pliaj vortoj en array1?
-  for (let i = 0; i < array2.length; i++) {
-    let troviĝas_en_array1 = false;
+  // kontroli ĉu estas pliaj vortoj en vortaro?
+  for (let i = 0; i < taja_vortaro.length; i++) {
+    let troviĝas_en_vortaro = false;
 
-    for (let j = 0; j < array1.length; j++) {
-      if (array2[i] === array1[j]) {
-        troviĝas_en_array1 = true;
+    for (let j = 0; j < vortaro.length; j++) {
+      if (taja_vortaro[i] === vortaro[j]) {
+        troviĝas_en_vortaro = true;
         break;
       }
     }
 
-    if (!troviĝas_en_array1) {
-      rezulto.push({ status: "ne estas en la datumbazo! 💔", value: array2[i] + " <a href=\"http://retavortaro.de/revo/dlg/index-2k.html?q=" + array2[i] + "\" target=\"_blank\">" + "ReVo" + "</a> " + "<a href=\"https://vortaro.net/#" + array2[i] + "\" target=\"_blank\">" + "PIV" + "</a>" });
+    if (!troviĝas_en_vortaro) {
+      rezulto.push({ status: "ne estas en la datumbazo! 💔", value: taja_vortaro[i] + " <a href=\"http://retavortaro.de/revo/dlg/index-2k.html?q=" + taja_vortaro[i] + "\" target=\"_blank\">" + "ReVo" + "</a> " + "<a href=\"https://vortaro.net/#" + taja_vortaro[i] + "\" target=\"_blank\">" + "PIV" + "</a>" });
     }
   }
 
   return rezulto;
 }
+console.log('TAJA_VORTARO_ARR', taja_vortaro_arr)
+console.log('VORTARO_ARR', vortaro_arr)
 
 const rezulto_de_komparado = Komparu(vortaro_arr, taja_vortaro_arr);
 const rezultujo = document.getElementById('eligo');

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="./style.css">
+  <style media="screen">
+    #ligiloj {
+      position: -webkit-sticky;
+      position: sticky;
+      position: fixed;
+      bottom: 0;
+      right: 16px;
+      padding: 1px;
+      width: 600px;
+      height: 30px;
+      background-color: yellow;
+      border: 2px solid blue;
+      font-size: 20px;
+      color: black;
+    }
+
+    a {
+      color: black;
+    }
+  </style>
+</head>
+<!-- Laboranta -->
+<body>
+  <h1>Kontrolilo de Vaslo</h1>
+  <h3>kapvortoj kaj subvortoj de ReVo</h3>
+  <br>
+  <!-- <input id="enigo" oninput="sercxi()" onfocus="sercxi()"> -->
+  <span id="eligo"></span>
+  <span id="ligiloj">Alklaki vorton por krei la ligilojn</span>
+  <script src="revo_vortaro.js" charset="utf-8"></script>
+  <script type="text/javascript">
+
+  console.log(revo_vortaro)
+
+const ignori_tab_arangxo = (a, b) => {
+  const normiga_A = a.replace(/^(?!\t).*/g, '').replace(/^-/g, '');
+  const normiga_B = b.replace(/^(?!\t).*/g, '').replace(/^-/g, '');
+  return normiga_A.localeCompare(normiga_B, 'eo');
+}
+
+let rezulto = revo_vortaro.split("\n").sort(ignori_tab_arangxo).toString().replace(/,/g, "<br>")
+console.log('REZULTO', rezulto)
+
+document.getElementById('eligo').innerHTML = rezulto;
+  </script>
+</body>
+
+</html>
